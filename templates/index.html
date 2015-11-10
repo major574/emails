@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+  <h1>EMAILS ADDRESSES GALORE</h1>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}  
+  <h3>Email Addresses Entered: </h3>
+  {% for email in emails: %}
+    <p>{{email['emailaddr']}} -- Date Created: {{email['created_at']}} -- Date Updated: {{email['updated_at']}}</p>
+  {% endfor %}  
+  <h2>Add an Email Address</h2>
+  <form action='/emails' method='POST'>
+    <label for="emailaddr">Email Address:<input type="text" name="emailaddr" id="emailaddr"></label>    
+  </form>
+</body>
+</html>
